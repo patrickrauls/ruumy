@@ -1,6 +1,7 @@
 //modules
 const express = require('express'),
-    body_parser = require('body-parser');
+    body_parser = require('body-parser'),
+    cors = require('cors')
 
 //methods
 const app = express(),
@@ -10,11 +11,11 @@ const app = express(),
 const products = require('./routes/products')
 
 //middleware
+app.use(cors());
 app.use(body_parser.urlencoded({
     extended: false
-}))
+}));
 app.use(json_parser);
-
 
 //routing
 app.use('/products', products);
