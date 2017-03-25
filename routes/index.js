@@ -6,7 +6,7 @@ const docs = {
     docs: 'format'
 }
 router.get('/', (req, res) => {
-    console.log('get index!');
+    console.log('get index!', req);
     res.status(200).json(docs)
 })
 
