@@ -1,6 +1,6 @@
 //modules
 const express = require('express'),
-    body_parser = require('body-parser'),
+    body_parser = require('body-parser');
 
 //methods
 const app = express(),
