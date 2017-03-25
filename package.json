@@ -1,0 +1,30 @@
+{
+  "name": "getruumy.com",
+  "version": "1.0.0",
+  "description": "ecommerce web and hybrid mobile application API for valet storage",
+  "main": "app.js",
+  "scripts": {
+    "start": "node bin/www",
+    "watch": "`npm bin`/nodemon bin/www",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Patrick Rauls",
+  "license": "ISC",
+  "engines": {
+    "node": "7.6.0"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^3.2.0",
+    "nodemon": "^1.11.0",
+    "supertest": "^3.0.0"
+  },
+  "dependencies": {
+    "body-parser": "^1.16.1",
+    "bookshelf": "^0.10.3",
+    "dotenv": "^4.0.0",
+    "knex": "^0.12.7",
+    "pg": "^6.1.2",
+    "stripe": "^4.15.0"
+  }
+}
