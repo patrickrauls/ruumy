@@ -7,7 +7,8 @@ const app = express(),
     json_parser = body_parser.json();
 
 //routes
-const products = require('./routes/products')
+const route = require('./routes/index'),
+    products = require('./routes/products');
 
 //middleware
 app.use(body_parser.urlencoded({
@@ -16,6 +17,7 @@ app.use(body_parser.urlencoded({
 app.use(json_parser);
 
 //routing
+app.use('/', route);
 app.use('/products', products);
 
 //export
