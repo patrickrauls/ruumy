@@ -1,5 +1,5 @@
 {
-  "name": "getruumy.com",
+  "name": "ruumyAPI",
   "version": "1.0.0",
   "description": "ecommerce web and hybrid mobile application API for valet storage",
   "main": "app.js",
@@ -8,8 +8,16 @@
     "watch": "`npm bin`/nodemon bin/www",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/patrickrauls/ruumyAPI.git"
+  },
   "author": "Patrick Rauls",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/patrickrauls/ruumyAPI/issues"
+  },
+  "homepage": "https://github.com/patrickrauls/ruumyWebClient#readme",
   "engines": {
     "node": "7.6.0"
   },
