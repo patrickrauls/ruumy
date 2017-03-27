@@ -19,10 +19,6 @@ const products = [
     }
 ]
 router.get('/', (req, res) => {
-    res.headers = {
-        "Access-Control-Allow-Origin": "*", // Required for CORS support to work
-        "Access-Control-Allow-Credentials": true // Required for cookies, authorization headers with HTTPS 
-    }
     console.log('get products', req);
     res.status(200).json(products);
 })
