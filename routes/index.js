@@ -23,7 +23,7 @@ const products = [
     }
 ]
 router.get('/', (req, res) => {
-    console.log('get index!', req);
+    console.log('index.js res.header()._headers:', res.header()._headers);
     res.status(200).json(docs)
 })
 
