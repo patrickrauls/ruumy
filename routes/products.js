@@ -19,7 +19,7 @@ const products = [
     }
 ]
 router.get('/', (req, res) => {
-    console.log('get products', res);
+    console.log('get products', res._headers);
     res.status(200).json(products);
 })
 
