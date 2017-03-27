@@ -1,6 +1,7 @@
 //modules
 const express = require('express'),
     body_parser = require('body-parser'),
+    path = require('path'),
     cors = require('cors');
 
 //methods
@@ -19,6 +20,7 @@ app.use(body_parser.urlencoded({
 app.use(json_parser);
 
 //routing
+app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', route);
 app.use('/products', products)
 
