@@ -20,6 +20,7 @@ app.use(json_parser);
 
 //routing
 app.use('/', route);
+app.use('/products', products)
 
 //export
 module.exports = app;
