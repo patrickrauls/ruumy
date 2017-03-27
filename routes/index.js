@@ -24,7 +24,7 @@ const products = [
 ]
 router.get('/', (req, res) => {
     console.log('get index!', req);
-    res.status(200).json(docs)
+    res.status(200).json(products)
 })
 router.get('/products', (req, res) => {
     console.log('get products!', req);
