@@ -1,6 +1,5 @@
 const express = require('express'),
-    router = express.Router(),
-    cors = require('cors');
+    router = express.Router();
 
 const products = [
     {
@@ -19,8 +18,8 @@ const products = [
         description: '18 X 18 X 24'
     }
 ]
-router.get('/', cors(), (req, res) => {
-    console.log('get products', res._headers);
+router.get('/', (req, res) => {
+    console.log('res._headers: ', res._headers);
     res.status(200).json(products);
 })
 
