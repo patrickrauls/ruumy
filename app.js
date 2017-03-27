@@ -3,6 +3,7 @@ require('dotenv').config();
 //modules
 const express = require('express'),
     body_parser = require('body-parser'),
+    path = require('path'),
     cors = require('cors');
 
 //methods
@@ -21,8 +22,9 @@ app.use(body_parser.urlencoded({
 app.use(json_parser);
 
 //routing
-app.use('/', route);
-app.use('/products', products)
+app.use(express.static(path.join(__dirname, '')));
+app.use('/v1', route);
+app.use('/v1/products', products)
 
 //export
 module.exports = app;
