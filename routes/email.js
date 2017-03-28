@@ -9,7 +9,6 @@ const router = express.Router(),
 
 const welcome = 'Thanks for getting in touch! We\'re making storage super easy and we\'re so excited to have you along for the ride! One of our team members will get in touch with you soon!';
 router.post('/', (req, res) => {
-    console.log(req.body);
     let from = new helper.Email('nathan@getruumy.com'),
         to = new helper.Email(req.body.email),
         subject = 'Storage is about to get way easier!',
@@ -20,15 +19,12 @@ router.post('/', (req, res) => {
             path: '/v3/mail/send',
             body: mail.toJSON()
         });
-        comsole.log(mail)
+        console.log('mail', mail)
     send.API(request, (error, response) => {
         if (error) {
             console.error(error);
             res.status(400).json({ message: 'Uh oh. There was a problem with your request. Please try again later' });
         } else {
-            console.log(response.statusCode);
-            console.log(response.body);
-            console.log(response.headers);
             res.status(200).json({ message: 'Thanks! We\'ll Be In Touch!' });
         }
     })
