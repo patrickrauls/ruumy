@@ -22,7 +22,8 @@ https.createServer(options, app).listen(8000)
 
 //routes
 const route = require('./routes/index'),
-    products = require('./routes/products');
+    products = require('./routes/products'),
+    email = require('./routes/email');
 
 //middleware
 app.use(cors());
@@ -35,6 +36,7 @@ app.use(json_parser);
 app.use(helmet());
 app.use(express.static(path.join(__dirname, '')));
 app.use('/v1', route);
+app.use('/v1/email', email);
 app.use('/v1/products', products)
 
 //export
