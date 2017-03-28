@@ -13,13 +13,15 @@ router.post('/', (req, res) => {
         to = new helper.Email(req.body.email),
         subject = 'Storage is about to get way easier!',
         content = new helper.Content('text/plain', welcome),
-        mail = new helper.Mail(from, subject, to, content),
-        request = send.emptyRequest({
-            method: 'POST',
-            path: '/v3/mail/send',
-            body: mail.toJSON()
-        });
-        console.log('mail', mail)
+        mail = new helper.Mail(from, subject, to, content);
+    mail.from_email.name = 'Nathan @ RUUMY';
+    mail.template_id = 'b9cb617c-3d9b-440c-8e79-bad6f6e8db6f';
+    let request = send.emptyRequest({
+        method: 'POST',
+        path: '/v3/mail/send',
+        body: mail.toJSON()
+    });
+    console.log('mail', mail)
     send.API(request, (error, response) => {
         if (error) {
             console.error(error);
