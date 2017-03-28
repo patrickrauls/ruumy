@@ -18,8 +18,7 @@ const options = {
     cert: fs.readFileSync(process.env.CERT),
     key: fs.readFileSync(process.env.KEY)
 };
-express.listen(process.env.PORT);
-https.createServer(option, app).listen(8000)
+https.createServer(options, app).listen(8000)
 
 //routes
 const route = require('./routes/index'),
