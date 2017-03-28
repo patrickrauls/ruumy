@@ -24,6 +24,9 @@ router.post('/', (req, res) => {
             console.error(error);
             res.status(400).json({ message: 'Uh oh. There was a problem with your request. Please try again later' });
         } else {
+            console.log(response.statusCode);
+            console.log(response.body);
+            console.log(response.headers);
             res.status(200).json({ message: 'Thanks! We\'ll Be In Touch!' });
         }
     })
