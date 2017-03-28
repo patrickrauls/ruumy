@@ -20,6 +20,7 @@ router.post('/', (req, res) => {
             path: '/v3/mail/send',
             body: mail.toJSON()
         });
+        comsole.log(mail)
     send.API(request, (error, response) => {
         if (error) {
             console.error(error);
