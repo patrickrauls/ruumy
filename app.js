@@ -2,13 +2,24 @@ require('dotenv').config();
 
 //modules
 const express = require('express'),
+    fs = require('fs'),
+    https = require('https'),
     body_parser = require('body-parser'),
     path = require('path'),
+    helmet = require('helmet'),
     cors = require('cors');
 
 //methods
 const app = express(),
     json_parser = body_parser.json();
+
+//server
+const options = {
+    cert: fs.readFileSync(process.env.CERT),
+    key: fs.readFileSync(process.env.KEY)
+};
+express.listen(process.env.PORT);
+https.createServer(option, app).listen(8000)
 
 //routes
 const route = require('./routes/index'),
@@ -22,6 +33,7 @@ app.use(body_parser.urlencoded({
 app.use(json_parser);
 
 //routing
+app.use(helmet());
 app.use(express.static(path.join(__dirname, '')));
 app.use('/v1', route);
 app.use('/v1/products', products)
