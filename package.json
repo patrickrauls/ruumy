@@ -4,8 +4,8 @@
   "description": "API serving user, inventory, and ecommerce applications for on demand storage app RUUMY",
   "main": "app.js",
   "scripts": {
-    "start": "node bin/www",
-    "dev": "`npm bin`/nodemon bin/www",
+    "start": "node app.js",
+    "dev": "`npm bin`/nodemon app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
