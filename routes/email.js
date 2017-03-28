@@ -1,5 +1,5 @@
 const router = require('express').Router(),
-    sendgrid = require('sendgrid')(process.env.EMAIL_USER, process.env.EMAIL);
+    sendgrid = require('sendgrid')(process.env.EMAIL_USER, process.env.EMAIL_PASSWORD);
 
     
 
