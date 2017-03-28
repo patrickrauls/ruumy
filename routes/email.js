@@ -20,7 +20,7 @@ router.post('/', (req, res) => {
             body: mail.toJSON()
         });
     send.API(request, (error, response) => {
-        if (err) {
+        if (error) {
             console.error(error);
             res.status(400).json({ message: 'Uh oh. There was a problem with your request. Please try again later' });
         } else {
