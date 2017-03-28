@@ -21,7 +21,7 @@ router.post('/', (req, res) => {
         });
     send.API(request, (error, response) => {
         if (err) {
-            console.error(err);
+            console.error(error);
             res.status(400).json({ message: 'Uh oh. There was a problem with your request. Please try again later' });
         } else {
             res.status(200).json({ message: 'Thanks! We\'ll Be In Touch!' });
