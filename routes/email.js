@@ -9,6 +9,7 @@ const router = express.Router(),
 
 const welcome = 'Thanks for getting in touch! We\'re making storage super easy and we\'re so excited to have you along for the ride! One of our team members will get in touch with you soon!';
 router.post('/', (req, res) => {
+    console.log(req.body);
     let from = new helper.Email('noreply@getruumy.com'),
         to = new helper.Email(req.body.email),
         subject = 'Storage is about to get way easier!',
