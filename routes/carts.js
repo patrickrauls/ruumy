@@ -3,41 +3,41 @@ const query = require('../query'),
 
 //create
 router.post('/', (req, res) => {
-    query.create_product(req.body)
-        .then(product => {
-            res.status(200).json(product)
+    query.create_cart(req.body)
+        .then(cart => {
+            res.status(200).json(cart)
         })
         .catch(console.error)
 })
 //read
 router.get('/:id', (req, res) => {
-    query.read_product(req.params.id)
-        .then(product => {
-            res.status(200).json(product)
+    query.read_cart(req.params.id)
+        .then(cart => {
+            res.status(200).json(cart)
         })
         .catch(console.error)
 })
 //update
 router.put('/', (req, res) => {
-    query.update_product(req.body)
-        .then(product => {
-            res.status(200).json(product)
+    query.update_cart(req.body)
+        .then(cart => {
+            res.status(200).json(cart)
         })
         .catch(console.error)
 })
 //delete
 router.delete('/:id', (req, res) => {
-    query.delete_product(req.params.id)
-        .then(product => {
-            res.status(200).json(product)
+    query.delete_cart(req.params.id)
+        .then(cart => {
+            res.status(200).json(cart)
         })
         .catch(console.error)
 })
 //list
 router.get('/', (req, res) => {
-    query.list_products()
-        .then(products => {
-            res.status(200).json(products)
+    query.list_carts()
+        .then(carts => {
+            res.status(200).json(carts)
         })
         .catch(console.error)
 })

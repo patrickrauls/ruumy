@@ -3,41 +3,41 @@ const query = require('../query'),
 
 //create
 router.post('/', (req, res) => {
-    query.create_product(req.body)
-        .then(product => {
-            res.status(200).json(product)
+    query.create_order(req.body)
+        .then(order => {
+            res.status(200).json(order)
         })
         .catch(console.error)
 })
 //read
 router.get('/:id', (req, res) => {
-    query.read_product(req.params.id)
-        .then(product => {
-            res.status(200).json(product)
+    query.read_order(req.params.id)
+        .then(order => {
+            res.status(200).json(order)
         })
         .catch(console.error)
 })
 //update
 router.put('/', (req, res) => {
-    query.update_product(req.body)
-        .then(product => {
-            res.status(200).json(product)
+    query.update_order(req.body)
+        .then(order => {
+            res.status(200).json(order)
         })
         .catch(console.error)
 })
 //delete
 router.delete('/:id', (req, res) => {
-    query.delete_product(req.params.id)
-        .then(product => {
-            res.status(200).json(product)
+    query.delete_order(req.params.id)
+        .then(order => {
+            res.status(200).json(order)
         })
         .catch(console.error)
 })
 //list
 router.get('/', (req, res) => {
-    query.list_products()
-        .then(products => {
-            res.status(200).json(products)
+    query.list_orders()
+        .then(orders => {
+            res.status(200).json(orders)
         })
         .catch(console.error)
 })

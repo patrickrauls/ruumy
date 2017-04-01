@@ -22,8 +22,13 @@ https.createServer(options, app).listen(8000)
 
 //routes
 const route = require('./routes/index'),
+    accounts = require('./routes/accounts'),
+    carts = require('./routes/carts'),
+    inventories = require('./routes/inventories'),
+    locations = require('./routes/locations'),
+    orders = require('./routes/orders'),
     products = require('./routes/products'),
-    email = require('./routes/email');
+    users = require('./routes/users');
 
 //middleware
 app.use(cors());
@@ -31,13 +36,18 @@ app.use(body_parser.urlencoded({
     extended: false
 }));
 app.use(json_parser);
+app.use(helmet());
 
 //routing
-app.use(helmet());
 app.use(express.static(path.join(__dirname, '')));
 app.use('/v1', route);
-app.use('/v1/email', email);
-app.use('/v1/products', products)
+app.use('/v1/accounts', accounts);
+app.use('/v1/carts', carts);
+app.use('/v1/inventories', inventories);
+app.use('/v1/locations', locations);
+app.use('/v1/orders', orders);
+app.use('/v1/products', products);
+app.use('/v1/users', users);
 
 //export
 module.exports = app;
