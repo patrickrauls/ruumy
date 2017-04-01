@@ -22,9 +22,9 @@ module.exports = {
     pool: {
       min: 2,
       max: 10,
-      requestTimeout: 1
+      requestTimeout: 10000
     },
-    acquireConnectionTimeout: 2,
+    acquireConnectionTimeout: 10000,
     migrations: {
       tableName: 'knex_migrations'
     }
