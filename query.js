@@ -6,10 +6,7 @@ const environment = process.env.ENV || 'development',
 module.exports = {
     create_account(account) {
         return knex('account')
-            .insert({
-                'id': account.id,
-                'super': account.super
-            })
+            .insert(account)
             .returning('*');
     },
     read_account(id) {
@@ -20,10 +17,7 @@ module.exports = {
     },
     update_account(account) {
         return knex('account')
-            .update({
-                'id': account.id,
-                'super': account.super
-            })
+            .update(account)
             .where('id', account.id)
             .returning('*');
     },
@@ -40,9 +34,7 @@ module.exports = {
     },
     create_cart(cart) {
         return knex('cart')
-            .insert({
-
-            })
+            .insert(cart)
             .returning('*');
     },
     read_cart(id) {
@@ -53,9 +45,7 @@ module.exports = {
     },
     update_cart(cart) {
         return knex('cart')
-            .update({
-
-            })
+            .update(cart)
             .where('id', cart.id)
             .returning('*');
     },
@@ -72,9 +62,7 @@ module.exports = {
     },
     create_inventory(inventory) {
         return knex('inventory')
-            .insert({
-
-            })
+            .insert(inventory)
             .returning('*');
     },
     read_inventory(id) {
@@ -85,9 +73,7 @@ module.exports = {
     },
     update_inventory(inventory) {
         return knex('inventory')
-            .update({
-
-            })
+            .update(inventory)
             .where('id', inventory.id)
             .returning('*');
     },
@@ -104,9 +90,7 @@ module.exports = {
     },
     create_location(location) {
         return knex('location')
-            .insert({
-
-            })
+            .insert(location)
             .returning('*');
     },
     read_location(id) {
@@ -117,9 +101,7 @@ module.exports = {
     },
     update_location(location) {
         return knex('location')
-            .update({
-
-            })
+            .update(location)
             .where('id', location.id)
             .returning('*');
     },
@@ -136,9 +118,7 @@ module.exports = {
     },
     create_product(product) {
         return knex('product')
-            .insert({
-
-            })
+            .insert(product)
             .returning('*');
     },
     read_product(id) {
@@ -149,9 +129,7 @@ module.exports = {
     },
     update_product(product) {
         return knex('product')
-            .update({
-
-            })
+            .update(product)
             .where('id', product.id)
             .returning('*');
     },
@@ -179,9 +157,7 @@ module.exports = {
     },
     update_user(user) {
         return knex('user')
-            .update({
-
-            })
+            .update(user)
             .where('id', user.id)
             .returning('*');
     },
