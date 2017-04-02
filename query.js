@@ -169,10 +169,10 @@ module.exports = {
     create_user(user) {
         return knex('user')
             .insert({
-                firstname,
-                lastname,
-                phone,
-                email
+                firstname: user.firstname,
+                lastname: user.lastname,
+                phone: user.phone,
+                email: user.email
             })
             .returning('*');
     },
