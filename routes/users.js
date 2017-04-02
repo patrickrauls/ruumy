@@ -1,12 +1,12 @@
-console.log('salt', process.env.SALT)
 const query = require('../query'),
     argon2 = require('argon2'),
-    // salt = Buffer.from(new String(process.env.SALT)),
-    salt = Buffer.from('dj80eouna08jw'),
+    salt = Buffer.from(process.env.SALT),
     router = require('express').Router();
 
 //create
 router.post('/', (req, res) => {
+    console.log('req.body', req.body)
+    console.log('salty', salt)
     argon2.hash(req.body.password, salt)
         .then(hash => {
             req.body.password = hash;
