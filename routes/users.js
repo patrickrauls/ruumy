@@ -3,6 +3,7 @@ const query = require('../query'),
 
 //create
 router.post('/', (req, res) => {
+    console.log('req.body', req.body)
     query.create_user(req.body)
         .then(user => {
             res.status(200).json(user)
