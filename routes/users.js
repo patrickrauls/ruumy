@@ -1,11 +1,20 @@
 const query = require('../query'),
+    argon2 = require('argon2'),
+    salt = new Buffer(process.env.SALT),
     router = require('express').Router();
 
 //create
 router.post('/', (req, res) => {
-    query.create_user(req.body)
+    argon2.hash(req.body.password, salt)
+        .then(hash => {
+            req.body.password = hash;
+            return req.body;
+        })
         .then(user => {
-            res.status(200).json(user)
+            query.create_user(user)
+                .then(user => {
+                    res.status(200).json(user)
+                })
         })
         .catch(console.error)
 })
