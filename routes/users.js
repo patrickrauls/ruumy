@@ -1,6 +1,6 @@
 const query = require('../query'),
     argon2 = require('argon2'),
-    salt = new Buffer(process.env.SALT),
+    salt = Buffer.from(process.env.SALT),
     router = require('express').Router();
 
 //create
