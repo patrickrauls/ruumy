@@ -35,8 +35,8 @@ router.put('/', (req, res) => {
         .catch(console.error)
 })
 //delete
-router.delete('/:id', (req, res) => {
-    query.delete_user(req.params.id)
+router.delete('/', (req, res) => {
+    query.delete_user(req.body)
         .then(user => {
             res.status(200).json(user)
         })
