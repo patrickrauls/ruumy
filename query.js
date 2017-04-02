@@ -13,7 +13,7 @@ module.exports = {
         return knex
             .select('*')
             .from('account')
-            .where('id', id);
+            .where(id);
     },
     update_account(account) {
         return knex('account')
@@ -23,7 +23,7 @@ module.exports = {
     },
     delete_account(id) {
         return knex('account')
-            .where('id', id)
+            .where(id)
             .del()
             .returning('*');
     },
@@ -41,7 +41,7 @@ module.exports = {
         return knex
             .select('*')
             .from('cart')
-            .where('id', id);
+            .where(id);
     },
     update_cart(cart) {
         return knex('cart')
@@ -51,7 +51,7 @@ module.exports = {
     },
     delete_cart(id) {
         return knex('cart')
-            .where('id', id)
+            .where(id)
             .del()
             .returning('*');
     },
@@ -69,7 +69,7 @@ module.exports = {
         return knex
             .select('*')
             .from('inventory')
-            .where('id', id);
+            .where(id);
     },
     update_inventory(inventory) {
         return knex('inventory')
@@ -79,7 +79,7 @@ module.exports = {
     },
     delete_inventory(id) {
         return knex('inventory')
-            .where('id', id)
+            .where(id)
             .del()
             .returning('*');
     },
@@ -97,7 +97,7 @@ module.exports = {
         return knex
             .select('*')
             .from('location')
-            .where('id', id);
+            .where(id);
     },
     update_location(location) {
         return knex('location')
@@ -107,7 +107,7 @@ module.exports = {
     },
     delete_location(id) {
         return knex('location')
-            .where('id', id)
+            .where(id)
             .del()
             .returning('*');
     },
@@ -125,7 +125,7 @@ module.exports = {
         return knex
             .select('*')
             .from('product')
-            .where('id', id);
+            .where(id);
     },
     update_product(product) {
         return knex('product')
@@ -135,7 +135,7 @@ module.exports = {
     },
     delete_product(id) {
         return knex('product')
-            .where('id', id)
+            .where(id)
             .del()
             .returning('*');
     },
@@ -153,7 +153,7 @@ module.exports = {
         return knex
             .select('*')
             .from('user')
-            .where('id', id);
+            .where(id);
     },
     update_user(user) {
         return knex('user')
@@ -163,7 +163,7 @@ module.exports = {
     },
     delete_user(id) {
         return knex('user')
-            .where('id', id)
+            .where(id)
             .del()
             .returning('*');
     },
