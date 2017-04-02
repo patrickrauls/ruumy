@@ -5,8 +5,6 @@ const query = require('../query'),
 
 //create
 router.post('/', (req, res) => {
-    console.log('req.body', req.body)
-    console.log('salty', salt)
     argon2.hash(req.body.password, salt)
         .then(hash => {
             req.body.password = hash;
