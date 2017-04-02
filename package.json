@@ -7,7 +7,7 @@
     "start": "node app.js",
     "forever": "forever start app.js",
     "again": "forever restart app.js",
-    "stop": "forever stopAll",
+    "stop": "forever stopall",
     "dev": "`npm bin`/nodemon app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
