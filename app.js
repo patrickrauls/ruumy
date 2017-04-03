@@ -45,10 +45,10 @@ app.use(session({
             port: process.env.SESSION_PORT,
             client: client
         }),
-        secure: true,
-        resave: false,
-        saveUninitialized: true
-    }
+    },
+    secure: true,
+    resave: false,
+    saveUninitialized: true
 }))
 app.use(body_parser.urlencoded({
     extended: false
