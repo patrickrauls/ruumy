@@ -3,7 +3,7 @@ const express = require('express'),
 
 
 router.get('/', (req, res) => {
-    req.session.redis = true;
+    req.session.key = {redis: true};
     res.status(200).json(req.session)
 })
 
