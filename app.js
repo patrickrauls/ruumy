@@ -43,7 +43,7 @@ app.use(session({
         store: new RedisStore({
             host: process.env.SESSION_HOST,
             port: process.env.SESSION_PORT,
-            client
+            client: client
         }),
         secure: true,
         resave: false,
