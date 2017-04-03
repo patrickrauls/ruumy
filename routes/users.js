@@ -16,7 +16,9 @@ router.post('/', (req, res) => {
                     res.status(200).json(user)
                 })
         })
-        .catch(console.error)
+        .catch(error => {
+            res.status(400).json(error)
+        })
 })
 //read
 router.get('/:id', (req, res) => {
@@ -24,7 +26,9 @@ router.get('/:id', (req, res) => {
         .then(user => {
             res.status(200).json(user)
         })
-        .catch(console.error)
+        .catch(error => {
+            res.status(400).json(error)
+        })
 })
 //update
 router.put('/', (req, res) => {
@@ -32,15 +36,19 @@ router.put('/', (req, res) => {
         .then(user => {
             res.status(200).json(user)
         })
-        .catch(console.error)
+        .catch(error => {
+            res.status(400).json(error)
+        })
 })
 //delete
-router.delete('/', (req, res) => {
-    query.delete_user(req.body)
+router.delete('/:id', (req, res) => {
+    query.delete_user(req.params.id)
         .then(user => {
             res.status(200).json(user)
         })
-        .catch(console.error)
+        .catch(error => {
+            res.status(400).json(error)
+        })
 })
 //list
 router.get('/', (req, res) => {
@@ -48,6 +56,8 @@ router.get('/', (req, res) => {
         .then(users => {
             res.status(200).json(users)
         })
-        .catch(console.error)
+        .catch(error => {
+            res.status(400).json(error)
+        })
 })
 module.exports = router;

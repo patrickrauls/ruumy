@@ -5,20 +5,24 @@ const express = require('express'),
     fs = require('fs'),
     https = require('https'),
     body_parser = require('body-parser'),
+    redis = require('redis'),
+    session = require('express-session'),
+    connect_redis = require('connect-redis'),
     path = require('path'),
     helmet = require('helmet'),
     cors = require('cors');
 
 //methods
 const app = express(),
-    json_parser = body_parser.json();
+    json_parser = body_parser.json(),
+    client = redis.createClient(),
+    RedisStore = connect_redis(session);
 
 //server
-const options = {
-    cert: fs.readFileSync(__dirname + '/keys/fullchain.pem'),
-    key: fs.readFileSync(__dirname + '/keys/privkey.pem')
-};
-https.createServer(options, app).listen(8000)
+https.createServer({
+    cert: fs.readFileSync(process.env.CERT),
+    key: fs.readFileSync(process.env.KEY)
+}, app).listen(8000);
 
 //routes
 const route = require('./routes/index'),
@@ -32,6 +36,20 @@ const route = require('./routes/index'),
 
 //middleware
 app.use(cors());
+app.set('trust proxy', 1);
+app.use(session({
+    secret: process.env.SESSION_SECRET,
+    cookie: {
+        store: new RedisStore({
+            host: process.env.SESSION_HOST,
+            port: process.env.SESSION_PORT,
+            client
+        }),
+        secure: true,
+        resave: false,
+        saveUninitialized: true
+    }
+}))
 app.use(body_parser.urlencoded({
     extended: false
 }));
