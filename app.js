@@ -15,7 +15,7 @@ const express = require('express'),
 //methods
 const app = express(),
     json_parser = body_parser.json(),
-    client = redis.createClient(),
+    // client = redis.createClient(),
     RedisStore = connect_redis(session);
 
 //server
@@ -43,7 +43,8 @@ app.use(session({
         store: new RedisStore({
             host: process.env.SESSION_HOST,
             port: process.env.SESSION_PORT,
-            client: client
+            prefix: 'session'
+            // client: client
         }),
     },
     secure: true,
