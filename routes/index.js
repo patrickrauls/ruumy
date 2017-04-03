@@ -4,7 +4,7 @@ const express = require('express'),
 
 router.get('/', (req, res) => {
     req.session.redis = true;
-    res.status(200).json(docs)
+    res.status(200).json(req.session)
 })
 
 module.exports = router;
