@@ -14,7 +14,15 @@ router.post('/login', (req, res) => {
             return Promise.all([user, argon2.verify(user[0].password, req.body.password)])
         })
         .then(match => {
-            match ? res.status(200).json(match) : res.status(401).json({error: {message: 'invalid username/password pair'}})
+            if (match) {
+                req.session.key = { valid: true }
+                res.status(200).json(match)
+            } else {
+                let error = {
+                    message: 'invalid email/password pair'
+                }
+                res.status(401).json(error)
+            }
         })
         .catch(error => {
             res.status(500).json(error);
