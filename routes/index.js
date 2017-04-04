@@ -13,9 +13,11 @@ router.post('/login', (req, res) => {
     query.read_user({ email: req.body.email })
         .then(user => {
             log('user after read', user);
-            return user.length > 0 ?
-            Promise.all([user, argon2.verify(user[0].password, req.body.password)]) :
-            null
+            if (user.length) {
+                return Promise.all([user, argon2.verify(user[0].password, req.body.password)])
+            }
+            res.status(401).send('invalid email/password pair')
+            throw new Error({'message': 'no emails'});
         })
         .then(match => {
             log(match);
