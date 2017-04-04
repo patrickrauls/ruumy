@@ -43,8 +43,8 @@ router.post('/login', (req, res) => {
         })
         .catch(error => {
             log('error in reading user', error)
-            error == 'Error: no records found' ?
-                res.status(401).json({error}) :
+            error.message === 'Error: no records found' ?
+                res.status(401).json(error) :
                 res.status(500).json(error)
         })
 })
