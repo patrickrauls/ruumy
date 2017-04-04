@@ -18,6 +18,7 @@ router.post('/login', (req, res) => {
             }
             res.status(401).send('invalid email/password pair')
             throw new Error({'message': 'no emails'});
+            return
         })
         .then(match => {
             log(match);
