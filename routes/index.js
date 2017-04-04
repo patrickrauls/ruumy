@@ -16,17 +16,18 @@ router.post('/login', (req, res) => {
         })
         .then(match => {
             console.log('match', match);
-            if (match) {
+            if (match[1]) {
                 req.session.key = {
                     id: match[0][0].id,
                     token: 'something'
                 }
                 res.status(200).json(req.session)
             } else {
-                let error = {
-                    message: 'invalid email/password pair'
-                }
-                res.status(401).json(error)
+                req.session.destroy(error => {
+                    error ?
+                        res.status(500).json(error) :
+                        res.status(401).send('invalid email/password pair')
+                })
             }
         })
         .catch(error => {
