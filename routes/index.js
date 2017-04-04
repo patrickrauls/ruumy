@@ -11,12 +11,13 @@ router.get('/', (req, res) => {
 router.post('/login', (req, res) => {
     query.read_user({ email: req.body.email })
         .then(user => {
-            console.log('hash', user)
             return Promise.all([user, argon2.verify(user[0].password, req.body.password)])
         })
         .then(match => {
-            console.log('match', match)
+            match ? res.status(200).json(match) : res.status(401).json({error: {message: 'invalid username/password pair'}})
         })
-        .catch(console.error)
+        .catch(error => {
+            res.status(500).json(error);
+        })
 })
 module.exports = router;
