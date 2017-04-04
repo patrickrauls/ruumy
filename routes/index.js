@@ -19,7 +19,7 @@ router.post('/login', (req, res) => {
                     id: match[0][0].id,
                     token: 'something'
                 }
-                res.status(200).json(match)
+                res.status(200).json(req.session)
             } else {
                 let error = {
                     message: 'invalid email/password pair'
