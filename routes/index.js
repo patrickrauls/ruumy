@@ -7,7 +7,7 @@ const express = require('express'),
 
 
 router.get('/', (req, res) => {
-    res.status(200).send()
+    res.status(200).json({ message: })
 })
 router.post('/login', (req, res) => {
     query.read_user({ email: req.body.email })
@@ -32,26 +32,26 @@ router.post('/login', (req, res) => {
                 req.session.destroy(error => {
                     log('error in destroying session: ', error);
                     error ?
-                        res.status(500).json(error.message) :
-                        res.status(401).send('invalid email/password pair')
+                        res.status(500).json({ message: error.message }) :
+                        res.status(401).json({ message: 'invalid email/password pair' })
                 })
             }
             else {
                 log('no session destroy needed')
-                res.status(401).send('invalid email/password pair')
+                res.status(401).json({ message: 'invalid email/password pair' })
             }
         })
         .catch(error => {
             log('error in reading user', error)
             error.message === 'no records found' ?
-                res.status(401).json(error.message) :
-                res.status(500).json(error.message)
+                res.status(401).json({ message: error.message }) :
+                res.status(500).json({ message: error.message })
         })
 })
 router.get('/logout', (req, res) => {
     req.session.destroy(error => {
         error ?
-            res.status(500).json(error.message) :
+            res.status(500).json({ message: error.message }) :
             res.status(200).json({ message: 'You have been logged out' })
     })
 })
