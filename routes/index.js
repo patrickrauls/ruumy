@@ -11,9 +11,11 @@ router.get('/', (req, res) => {
 router.post('/login', (req, res) => {
     query.read_user({ email: req.body.email })
         .then(user => {
+            console.log('user password', user[0].password)
             return Promise.all([user, argon2.verify(user[0].password, req.body.password)])
         })
         .then(match => {
+            console.log('match', match);
             if (match) {
                 req.session.key = {
                     id: match[0][0].id,
