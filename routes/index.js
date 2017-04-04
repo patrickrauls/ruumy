@@ -7,7 +7,7 @@ const express = require('express'),
 
 
 router.get('/', (req, res) => {
-    res.status(200).json({ message: })
+    res.status(200).json({ message: 'welcome to the ruumy API'})
 })
 router.post('/login', (req, res) => {
     query.read_user({ email: req.body.email })

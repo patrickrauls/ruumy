@@ -6,7 +6,7 @@ const query = require('../query'),
 router.post('/', (req, res) => {
     if (req.session) {
         stripe.customers.create({
-            email: req.session.email,
+            email: req.session.user.email,
             source: req.body.stripeToken
         })
             .then(customer => {
@@ -27,7 +27,7 @@ router.post('/', (req, res) => {
 //read
 router.get('/:id', (req, res) => {
     if (req.session) {
-        query.read_account(req.session.key.id)
+        query.read_account(req.session.user.id)
             .then(account => {
                 res.status(200).json(account)
             })
@@ -51,7 +51,7 @@ router.put('/', (req, res) => {
 //delete
 router.delete('/', (req, res) => {
     if (req.session) {
-        query.delete_account(req.session.key.id)
+        query.delete_account(req.session.user.id)
             .then(account => {
                 res.status(200).json(account)
             })
