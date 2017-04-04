@@ -13,7 +13,7 @@ router.post('/login', (req, res) => {
     query.read_user({ email: req.body.email })
         .then(user => {
             log('user after read', user);
-            return user ?
+            return user.length > 0 ?
             Promise.all([user, argon2.verify(user[0].password, req.body.password)]) :
             null
         })
@@ -41,7 +41,7 @@ router.post('/login', (req, res) => {
         })
         .catch(error => {
             log('error in reading user', error)
-            res.status(500).json(error);
+            res.status(500).send(error);
         })
 })
 router.get('/logout', (req, res) => {
