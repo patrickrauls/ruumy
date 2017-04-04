@@ -12,7 +12,7 @@ router.post('/login', (req, res) => {
     query.read_user({ email: req.body.email })
         .then(user => {
             console.log('hash', user)
-            return Promise.all([user, argon2.verify(user.password, req.body.password)])
+            return Promise.all([user, argon2.verify(user[0].password, req.body.password)])
         })
         .then(match => {
             console.log('match', match)
