@@ -15,15 +15,15 @@ router.post('/login', (req, res) => {
         })
         .then(match => {
             if (match[1]) {
-                req.session.key = {
+                req.session.user = {
                     id: match[0][0].id,
-                    token: 'something'
+                    email: match[0][0].email
                 }
                 res.status(200).json(req.session)
             } else {
                 req.session.destroy(error => {
                     error ?
-                        res.status(500).json(error) :
+                        res.status(500).send(error) :
                         res.status(401).send('invalid email/password pair')
                 })
             }
@@ -35,7 +35,7 @@ router.post('/login', (req, res) => {
 router.get('/logout', (req, res) => {
     req.session.destroy(error => {
         error ?
-            res.status(400).json(error) :
+            res.status(500).json(error) :
             res.status(200).json({ message: 'You have been logged out' })
     })
 })

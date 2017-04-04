@@ -5,9 +5,19 @@ const query = require('../query'),
 //create
 router.post('/', (req, res) => {
     if (req.session) {
-        query.create_account(req.body)
-            .then(account => {
-                res.status(200).json(account)
+        stripe.customers.create({
+            email: req.session.email,
+            source: req.body.stripeToken
+        })
+            .then(customer => {
+                return Promise.all([
+                    customer,
+                    query.create_account({ id: customer.id }),
+                    query.create_account_user({ account: customer.id, user: req.session.user.id })
+                ])
+            })
+            .then(results => {
+                res.status(200).json(results[1])
             })
             .catch(console.error)
     } else {
