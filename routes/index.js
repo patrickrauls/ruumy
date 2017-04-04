@@ -11,26 +11,21 @@ router.get('/', (req, res) => {
 router.post('/login', (req, res) => {
     query.read_user({ email: req.body.email })
         .then(user => {
-            console.log('user password', user[0].password)
             return Promise.all([user, argon2.verify(user[0].password, req.body.password)])
         })
         .then(match => {
-            console.log('match', match);
             if (match[1]) {
                 req.session.key = {
                     id: match[0][0].id,
                     token: 'something'
                 }
                 res.status(200).json(req.session)
-                console.log('successful login req.session', req.session)
             } else {
-                console.log('unsuccessful login before destroy req.session', req.session)
                 req.session.destroy(error => {
                     error ?
                         res.status(500).json(error) :
                         res.status(401).send('invalid email/password pair')
                 })
-                console.log('unsuccessful login after destroy req.session', req.session)
             }
         })
         .catch(error => {
@@ -38,12 +33,10 @@ router.post('/login', (req, res) => {
         })
 })
 router.get('/logout', (req, res) => {
-    console.log('logout req.session before destroy', req.session)
     req.session.destroy(error => {
         error ?
             res.status(400).json(error) :
             res.status(200).json({ message: 'You have been logged out' })
     })
-    console.log('logout after destroy req.session', req.session)
 })
 module.exports = router;
