@@ -1,10 +1,21 @@
 const express = require('express'),
+    query = require('../query'),
+    argon2 = require('argon2'),
+    salt = Buffer.from(process.env.SALT),
     router = express.Router();
 
 
 router.get('/', (req, res) => {
-    req.session.key = {redis: true};
-    res.status(200).json(req.session)
+    res.status(200).send()
 })
-
+router.post('/login', (req, res) => {
+    query.read_user({ email: req.body.email })
+        .then(user => {
+            return Promise.all([user, argon2.verify(user.password, req.body.password)])
+        })
+        .then(match => {
+            console.log('match', match)
+        })
+        .catch(console.error)
+})
 module.exports = router;
