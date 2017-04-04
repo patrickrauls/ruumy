@@ -22,12 +22,15 @@ router.post('/login', (req, res) => {
                     token: 'something'
                 }
                 res.status(200).json(req.session)
+                console.log('successful login req.session', req.session)
             } else {
+                console.log('unsuccessful login before destroy req.session', req.session)
                 req.session.destroy(error => {
                     error ?
                         res.status(500).json(error) :
                         res.status(401).send('invalid email/password pair')
                 })
+                console.log('unsuccessful login after destroy req.session', req.session)
             }
         })
         .catch(error => {
@@ -35,10 +38,12 @@ router.post('/login', (req, res) => {
         })
 })
 router.get('/logout', (req, res) => {
+    console.log('logout req.session before destroy', req.session)
     req.session.destroy(error => {
         error ?
             res.status(400).json(error) :
             res.status(200).json({ message: 'You have been logged out' })
     })
+    console.log('logout after destroy req.session', req.session)
 })
 module.exports = router;
