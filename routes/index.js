@@ -15,7 +15,10 @@ router.post('/login', (req, res) => {
         })
         .then(match => {
             if (match) {
-                req.session.key = { valid: true }
+                req.session.key = {
+                    id: match[0][0].id,
+                    token: 'something'
+                }
                 res.status(200).json(match)
             } else {
                 let error = {
