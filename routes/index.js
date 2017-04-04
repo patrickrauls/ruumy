@@ -13,7 +13,9 @@ router.post('/login', (req, res) => {
     query.read_user({ email: req.body.email })
         .then(user => {
             log('user after read', user);
-            return Promise.all([user, argon2.verify(user[0].password, req.body.password)])
+            return user ?
+            Promise.all([user, argon2.verify(user[0].password, req.body.password)]) :
+            null
         })
         .then(match => {
             log(match);
