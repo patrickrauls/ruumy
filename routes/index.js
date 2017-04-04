@@ -16,9 +16,8 @@ router.post('/login', (req, res) => {
             if (user.length) {
                 return Promise.all([user, argon2.verify(user[0].password, req.body.password)])
             }
-            res.status(401).send('invalid email/password pair')
-            throw new Error({'message': 'no emails'});
-            return
+            throw new Error('no records found');
+            return null;
         })
         .then(match => {
             log(match);
@@ -44,7 +43,9 @@ router.post('/login', (req, res) => {
         })
         .catch(error => {
             log('error in reading user', error)
-            res.status(500).send(error);
+            error === 'no records found' ?
+                res.status(401).json(error) :
+                res.status(500).json(error)
         })
 })
 router.get('/logout', (req, res) => {
