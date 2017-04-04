@@ -23,7 +23,7 @@ router.post('/login', (req, res) => {
             } else {
                 req.session.destroy(error => {
                     error ?
-                        res.status(500).send(error) :
+                        res.status(500).send('error') :
                         res.status(401).send('invalid email/password pair')
                 })
             }
