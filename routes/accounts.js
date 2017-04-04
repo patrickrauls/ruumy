@@ -21,7 +21,7 @@ router.post('/', (req, res) => {
             })
             .catch(console.error)
     } else {
-        res.status(401).redirect('/')
+        res.status(401).redirect('/v1/login')
     }
 })
 //read
@@ -33,7 +33,7 @@ router.get('/:id', (req, res) => {
             })
             .catch(console.error)
     } else {
-        res.status(401).redirect('/')
+        res.status(401).redirect('/v1/login')
     }
 })
 //update
@@ -45,7 +45,7 @@ router.put('/', (req, res) => {
             })
             .catch(console.error)
     } else {
-        res.status(401).redirect('/')
+        res.status(401).redirect('/v1/login')
     }
 })
 //delete
@@ -57,7 +57,7 @@ router.delete('/', (req, res) => {
             })
             .catch(console.error)
     } else {
-        res.status(401).redirect('/')
+        res.status(401).redirect('/v1/login')
     }
 })
 //list
@@ -69,7 +69,7 @@ router.get('/', (req, res) => {
             })
             .catch(console.error)
     } else {
-        res.status(401).redirect('/')
+        res.status(401).redirect('/v1/login')
     }
 })
 module.exports = router;

@@ -1,6 +1,7 @@
 const express = require('express'),
     query = require('../query'),
     argon2 = require('argon2'),
+    crypto = require('crypto'),
     salt = Buffer.from(process.env.SALT),
     log = console.log,
     router = express.Router();
@@ -8,6 +9,9 @@ const express = require('express'),
 
 router.get('/', (req, res) => {
     res.status(200).json({ message: 'welcome to the ruumy API'})
+})
+router.get('/login', (req, res) => {
+    res.status(401).json({ message: 'Please Login'})
 })
 router.post('/login', (req, res) => {
     query.read_user({ email: req.body.email })
@@ -24,7 +28,8 @@ router.post('/login', (req, res) => {
             if (match[1]) {
                 req.session.user = {
                     id: match[0][0].id,
-                    email: match[0][0].email
+                    email: match[0][0].email,
+                    token: crypto.randomBytes(20).toString(36)
                 }
                 log('req.session after created', req.session)
                 res.status(200).json(req.session)
