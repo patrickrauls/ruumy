@@ -24,7 +24,7 @@ router.post('/login', (req, res) => {
                 }
                 log('req.session after created', req.session)
                 res.status(200).json(req.session)
-            } elseif(req.session) {
+            } else if (req.session) {
                 req.session.destroy(error => {
                     log('error in destroying session')
                     error ?
