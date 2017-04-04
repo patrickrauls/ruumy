@@ -30,9 +30,9 @@ router.post('/login', (req, res) => {
                 res.status(200).json(req.session)
             } else if (req.session) {
                 req.session.destroy(error => {
-                    log('error in destroying session')
+                    log('error in destroying session: ', error);
                     error ?
-                        res.status(500).json(error) :
+                        res.status(500).json(error.message) :
                         res.status(401).send('invalid email/password pair')
                 })
             }
@@ -51,7 +51,7 @@ router.post('/login', (req, res) => {
 router.get('/logout', (req, res) => {
     req.session.destroy(error => {
         error ?
-            res.status(500).json(error) :
+            res.status(500).json(error.message) :
             res.status(200).json({ message: 'You have been logged out' })
     })
 })
