@@ -29,7 +29,7 @@ router.post('/login', (req, res) => {
                 req.session.user = {
                     id: match[0][0].id,
                     email: match[0][0].email,
-                    token: crypto.randomBytes(20).toString(36)
+                    token: crypto.randomBytes(20).toString('hex')
                 }
                 log('req.session after created', req.session)
                 res.status(200).json(req.session)
