@@ -117,9 +117,14 @@ module.exports = {
             .from('location')
     },
     create_location_type(title) {
-        return knex
+        return knex('location_type')
             .insert(title)
             .returning('*');
+    },
+    list_location_types() {
+        return knex
+            .select('*')
+            .from('location_type')
     },
     create_product(product) {
         return knex('product')
