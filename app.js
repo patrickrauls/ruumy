@@ -61,7 +61,7 @@ app.use(helmet());
 //routing
 app.use(express.static(path.join(__dirname, '')));
 app.use('/v1', route);
-app.use('v1/admin', admin);
+app.use('/v1/admin', admin);
 app.use('/v1/accounts', accounts);
 app.use('/v1/carts', carts);
 app.use('/v1/inventories', inventories);
