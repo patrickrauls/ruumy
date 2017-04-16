@@ -8,7 +8,6 @@ const express = require('express'),
     redis = require('redis'),
     session = require('express-session'),
     connect_redis = require('connect-redis'),
-    path = require('path'),
     helmet = require('helmet'),
     cors = require('cors');
 
