@@ -5,7 +5,7 @@ router.get('/', (req, res) => {
 
 })
 router.post('/location_type', (req, res) => {
-    query.create_location_type(title)
+    query.create_location_type(req.body)
         .then(location_type => {
             res.status(200).json(location_type)
         })
