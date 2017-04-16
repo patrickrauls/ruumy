@@ -7,7 +7,10 @@ router.post('/', (req, res) => {
         .then(product => {
             res.status(200).json(product)
         })
-        .catch(console.error)
+        .catch(error => {
+            console.error(error);
+            res.status(500).json(error);
+        })
 })
 //read
 router.get('/:id', (req, res) => {
@@ -15,7 +18,10 @@ router.get('/:id', (req, res) => {
         .then(product => {
             res.status(200).json(product)
         })
-        .catch(console.error)
+        .catch(error => {
+            console.error(error);
+            res.status(500).json(error);
+        })
 })
 //update
 router.put('/', (req, res) => {
@@ -23,7 +29,10 @@ router.put('/', (req, res) => {
         .then(product => {
             res.status(200).json(product)
         })
-        .catch(console.error)
+        .catch(error => {
+            console.error(error);
+            res.status(500).json(error);
+        })
 })
 //delete
 router.delete('/:id', (req, res) => {
@@ -31,7 +40,10 @@ router.delete('/:id', (req, res) => {
         .then(product => {
             res.status(200).json(product)
         })
-        .catch(console.error)
+        .catch(error => {
+            console.error(error);
+            res.status(500).json(error);
+        })
 })
 //list
 router.get('/', (req, res) => {
@@ -39,6 +51,9 @@ router.get('/', (req, res) => {
         .then(products => {
             res.status(200).json(products)
         })
-        .catch(console.error)
+        .catch(error => {
+            console.error(error);
+            res.status(500).json(error);
+        })
 })
 module.exports = router;
