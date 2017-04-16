@@ -26,6 +26,7 @@ https.createServer({
 
 //routes
 const route = require('./routes/index'),
+    admin = require('./routes/admin'),
     accounts = require('./routes/accounts'),
     carts = require('./routes/carts'),
     inventories = require('./routes/inventories'),
