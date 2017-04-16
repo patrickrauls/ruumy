@@ -3,6 +3,7 @@ require('dotenv').config();
 //modules
 const express = require('express'),
     fs = require('fs'),
+    path = require('path'),
     https = require('https'),
     body_parser = require('body-parser'),
     redis = require('redis'),
