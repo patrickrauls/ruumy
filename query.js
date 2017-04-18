@@ -156,7 +156,7 @@ module.exports = {
     },
     create_user(user) {
         return knex('user')
-            .insert(user)
+            .insert(Object.assign({created_at: knex.fn.now(), updated_at: knex.fn.now()}, user))
             .returning('*');
     },
     read_user(id) {
@@ -167,7 +167,7 @@ module.exports = {
     },
     update_user(user) {
         return knex('user')
-            .update(user)
+            .update(Object.assign({updated_at: knex.fn.now()}, user))
             .where('id', user.id)
             .returning('*');
     },
