@@ -14,6 +14,7 @@ router.get('/login', (req, res) => {
     res.status(401).json({ message: 'Please Login'})
 })
 router.post('/login', (req, res) => {
+    console.log('req.body', req.body)
     query.read_user({ email: req.body.email })
         .then(user => {
             log('user after read', user);
