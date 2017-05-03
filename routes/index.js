@@ -12,7 +12,7 @@ router.get('/', (req, res) => {
 })
 router.get('/session', (req, res) => {
     req.session ?
-    res.status(200).json(req.session) :
+    res.status(200).json(Object.assign(req.session, {user: req.session.user})) :
     res.status(401).send(false);
 })
 router.get('/login', (req, res) => {
