@@ -46,9 +46,9 @@ app.use(session({
         prefix: 'session'
         // client: client
     }),
-    cookie: {
-        maxAge: 600000
-    },
+    // cookie: {
+    //     maxAge: 600000
+    // },
     secure: true,
     resave: false,
     saveUninitialized: true
