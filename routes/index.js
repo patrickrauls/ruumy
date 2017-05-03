@@ -10,6 +10,11 @@ const express = require('express'),
 router.get('/', (req, res) => {
     res.status(200).json({ message: 'welcome to the ruumy API'})
 })
+router.get('/session', (req, res) => {
+    req.session ?
+    res.status(200).json(req.session) :
+    res.status(401).send(false);
+})
 router.get('/login', (req, res) => {
     res.status(401).json({ message: 'Please Login'})
 })
