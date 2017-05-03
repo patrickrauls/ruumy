@@ -40,13 +40,14 @@ app.use(cors());
 app.set('trust proxy', 1);
 app.use(session({
     secret: process.env.SESSION_SECRET,
+    store: new RedisStore({
+        host: process.env.SESSION_HOST,
+        port: process.env.SESSION_PORT,
+        prefix: 'session'
+        // client: client
+    }),
     cookie: {
-        store: new RedisStore({
-            host: process.env.SESSION_HOST,
-            port: process.env.SESSION_PORT,
-            prefix: 'session'
-            // client: client
-        }),
+        maxAge: 600000
     },
     secure: true,
     resave: false,
